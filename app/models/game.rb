@@ -2,7 +2,7 @@
 
 class Game < ApplicationRecord
   belongs_to :user
-  has_many :game_events
+  has_many :game_events, dependent: :delete_all
   has_many :events, through: :game_events
   has_many :prices
 
