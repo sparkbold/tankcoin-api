@@ -4,7 +4,7 @@ class Game < ApplicationRecord
   belongs_to :user
   has_many :game_events, dependent: :delete_all
   has_many :events, through: :game_events
-  has_many :prices
+  has_many :prices, dependent: :delete_all
 
   def create_events(num_of_events)
     events = Event.all
