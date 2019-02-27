@@ -23,7 +23,11 @@ class GamesController < ApplicationController
   def update
     gp = game_params
     game = Game.find(game_params["id"])
-    game.update(net_value: game_params["net_value"], end_price: game_params["end_price"])
+    if game_params["net_value"] && game_params["end_price"] 
+      game.update(net_value: game_params["net_value"], end_price: game_params["end_price"])
+    else
+      game.update(net_value: 0, end_price: 0)
+    end
   end
 
   def login
